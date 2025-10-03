@@ -5,9 +5,8 @@
 This project demonstrates **functions, loops, and timing** in Arduino to calculate and display a mathematical expression on an LCD screen. The expression iterates over a range of inputs, printing each output and highlighting the maximum and minimum values.  
 
 ## Key Features
-- Reusable Arduino function to calculate:
-y = cos(1/x) * x^3 - 15 * (sin(x)/x), x ∈ [-1.2, 1.2], step = 0.05
-- - Loops to systematically evaluate and display outputs  
+- Reusable Arduino function to calculate: y = cos(1/x) * x^3 - 15 * (sin(x)/x), x ∈ [-1.2, 1.2], step = 0.05
+- Loops to systematically evaluate and display outputs  
 - 16x2 LCD with scrolling for long messages  
 - Max and min output values calculated and displayed  
 
