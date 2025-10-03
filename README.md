@@ -1,6 +1,6 @@
 # Project #4 – Functions & Loops
 **Course:** EML4804 Introduction to Mechatronics – Summer 2024  
-**Submitted by:** Ela Nunez (ID: 6296607)  
+**By:** Ela Nuñez
 
 This project demonstrates **functions, loops, and timing** in Arduino to calculate and display a mathematical expression on an LCD screen. The expression iterates over a range of inputs, printing each output and highlighting the maximum and minimum values.  
 
