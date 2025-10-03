@@ -1,0 +1,39 @@
+# Arduino build files
+*.elf
+*.hex
+*.bin
+*.eep
+*.map
+*.cpp~
+*.h~
+*.o
+*.d
+
+# Arduino IDE temporary and backup files
+*.tmp
+*.bak
+*.swp
+*.log
+
+# Build directories
+/build/
+
+# Library folders (keep your custom libraries, ignore compiled)
+*.a
+*.so
+
+# OS-specific files
+# macOS
+.DS_Store
+# Windows
+Thumbs.db
+desktop.ini
+
+# Ignore user-specific IDE configs
+*.idea/
+.vscode/
+*.sublime-workspace
+*.sublime-project
+
+# Ignore generated output files
+/output/
