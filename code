@@ -1,0 +1,74 @@
+// include the library code:
+#include <LiquidCrystal.h>
+
+// initialize the library by associating any needed LCD interface pin 
+// with the arduino pin number it is connected to
+const int rs = 12, en = 11, d4 = 5, d5 = 4, d6 = 3, d7 = 2; 
+LiquidCrystal lcd(rs, en, d4, d5, d6, d7);
+
+void setup() {
+// set up the LCD's number of columns and rows: 
+lcd.begin(16, 2);
+}
+
+// Set up function in its own loop
+// use "float" to input decimal variables 
+float myFunction(float x){
+  float y;
+  y = cos(1/x) * pow(x,3) - 15 * (sin(x)/x); // define function 
+  return y; // return the solution
+}
+
+void loop() {
+  // (note: line 0 is the first row, since counting begins with 0): 
+  lcd.setCursor(0, 0); // set the cursor to column 0, line 0 
+  lcd.print("y=cos(1/x)*x^3-15*sin(x)/x"); // print a message to the LCD 
+  lcd.setCursor(0, 1); // set the cursor to column 0, line 1 
+  lcd.print("x:-1.2..1.2,s:.05"); // print message
+  delay(2000); // 2 second delay
+  // scroll 25 positions (string length) to the left to move it offscreen left: 
+  for (int positionCounter = 0; positionCounter < 25; positionCounter++) {
+    // scroll one position left:
+    lcd.scrollDisplayLeft();
+    // wait a bit (0.35 seconds): 
+    delay(350);
+  }
+  lcd.clear(); // clear the display for next loop
+  
+  // define starting input value; ending input value; step size
+  for (float i = -1.2; i <= 1.2; i += 0.05){ 
+    lcd.setCursor(0, 0);
+    lcd.print("x: ");
+    lcd.print(i);
+    lcd.setCursor(0, 1);
+    lcd.print("y: ");
+    lcd.print(myFunction(i));
+    delay(150); // wait 0.15 seconds to print the next i/o set
+    lcd.clear(); // clear the display for the next i/o set 
+  }
+  delay(500); // wait 0.5 seconds to display the next message
+  
+  // define variables to store the maximum and minimum values
+  float maxValue = myFunction(-1.2); // initialize to the smallest possible value 
+  float minValue = myFunction(-1.2); // initialize to the largest possible value
+  
+  // iterate over the range of values for i
+  for (float i = -1.2 + 0.05; i <= 1.2; i+= 0.05) { 
+    // calculate the function value
+    float functionValue = myFunction(i);
+    
+    // Update the maximum and minimum values
+    maxValue = max(maxValue, functionValue);
+    minValue = min(minValue, functionValue); 
+  }
+  
+  // Print the maximum and minimum values on the LCD display
+  lcd.setCursor(0, 0); 
+  lcd.print("max: "); 
+  lcd.print(maxValue);
+  
+  lcd.setCursor(0, 1);
+  lcd.print("min: ");
+  lcd.print(minValue);
+  delay(2000); // add a delay to ensure the results are printed
+}
